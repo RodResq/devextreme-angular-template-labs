@@ -1,17 +1,10 @@
-<h2>Employe List</h2>
+<h2 class="content-block">Employe List</h2>
 
 <dx-data-grid
   [dataSource]="employesDataSource"
-  keyExpr="id"
   [allowColumnReordering]="true"
   [showBorders]="true"
-  (onInitNewRow)="addNewEmploye()"
-  (onRowInserting)="insertingNewEmployee()"
-  (onRowInserted)="insertedEmployee($event.data)"
-  (onEditingStart)="startEditing()"
-  (onRowUpdating)="updatingRow()"
-  (onRowUpdated)="($event.data)"
-  [showBorders]="true">
+  (onRowClick)="detail($event.data.id)">
 
   <dxo-selection mode="single"></dxo-selection>
 
@@ -26,13 +19,15 @@
   <dxi-column caption="address" dataField="address"></dxi-column>
   <dxi-column  dataField="birthDate" dataType="date"></dxi-column>
 
-  <dxi-column type="buttons">
-      <dxi-button
-        hint="Detalhe"
-        icon="chevronright"
-        [visible]="true"
-        [onClick]="null"></dxi-button>
-    </dxi-column>
+
+<!--  Verificar-->
+<!--  <dxi-column type="buttons">-->
+<!--      <dxi-button-->
+<!--        hint="Detalhe"-->
+<!--        icon="chevronright"-->
+<!--        [visible]="true"-->
+<!--      ></dxi-button>-->
+<!--    </dxi-column>-->
 
   <dxo-summary>
     <dxi-total-item

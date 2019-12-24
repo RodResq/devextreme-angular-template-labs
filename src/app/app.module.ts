@@ -7,7 +7,6 @@ import {FooterModule, LoginFormModule} from './shared/components';
 import {AppInfoService, AuthService, ScreenService} from './shared/services';
 import {AppRoutingModule} from './app-routing.module';
 import {EmployeModule} from './pages/employe/employe.module';
-import {DxoSummaryModule} from 'devextreme-angular';
 
 @NgModule({
   declarations: [

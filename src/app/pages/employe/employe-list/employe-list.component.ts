@@ -1,19 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {Employee} from '../../../domain/employee';
-import {State} from '../../../domain/state';
 import {EmployeService} from '../../../service/employe.service';
 import DevExpress from 'devextreme';
 import DataSource = DevExpress.data.DataSource;
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-row-editing',
   templateUrl: './employe-list.component.html'
 })
-export class EmployeListComponent implements OnInit{
+export class EmployeListComponent implements OnInit {
   public employesDataSource: DataSource;
 
   private emPloyeeNovo: Employee = new Employee();
-  constructor( private employeService: EmployeService) {
+  constructor(
+    private employeService: EmployeService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -23,8 +26,13 @@ export class EmployeListComponent implements OnInit{
 
   }
 
+  detail(id: number) {
+    this.router.navigate([id], {relativeTo: this.activatedRoute});
+    console.log('test');
+  }
+
   addNewEmploye() {
-    console.log('new employee adding');
+    console.log();
   }
 
   insertingNewEmployee() {
