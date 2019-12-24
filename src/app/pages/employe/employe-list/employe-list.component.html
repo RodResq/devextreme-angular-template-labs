@@ -1,0 +1,47 @@
+<h2>Employe List</h2>
+
+<dx-data-grid
+  [dataSource]="employesDataSource"
+  keyExpr="id"
+  [allowColumnReordering]="true"
+  [showBorders]="true"
+  (onInitNewRow)="addNewEmploye()"
+  (onRowInserting)="insertingNewEmployee()"
+  (onRowInserted)="insertedEmployee($event.data)"
+  (onEditingStart)="startEditing()"
+  (onRowUpdating)="updatingRow()"
+  (onRowUpdated)="($event.data)"
+  [showBorders]="true">
+
+  <dxo-selection mode="single"></dxo-selection>
+
+  <dxo-paging [enabled]="true"></dxo-paging>
+
+  <dxi-column caption="Order Number" dataField="orderNumber"></dxi-column>
+  <dxi-column caption="First Name" dataField="firstName"></dxi-column>
+  <dxi-column caption="last Name" dataField="lastName"></dxi-column>
+  <dxi-column caption="prefix" dataField="prefix"></dxi-column>
+  <dxi-column caption="position" dataField="position"></dxi-column>
+  <dxi-column caption="hireDate" dataField="hireDate"></dxi-column>
+  <dxi-column caption="address" dataField="address"></dxi-column>
+  <dxi-column  dataField="birthDate" dataType="date"></dxi-column>
+
+  <dxi-column type="buttons">
+      <dxi-button
+        hint="Detalhe"
+        icon="chevronright"
+        [visible]="true"
+        [onClick]="null"></dxi-button>
+    </dxi-column>
+
+  <dxo-summary>
+    <dxi-total-item
+      name="Total"
+      column="orderNumber"
+      summaryType="count"
+      showInColumn="date"
+      alignment='center'>
+    </dxi-total-item>
+  </dxo-summary>
+
+</dx-data-grid>

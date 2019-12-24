@@ -6,7 +6,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {DisplayDataComponent} from './pages/display-data/display-data.component';
 import {DxDataGridModule, DxFormModule} from 'devextreme-angular';
-import {EmployeComponent} from './pages/employe/employe.component';
+import {EmployeListComponent} from './pages/employe/employe-list/employe-list.component';
 
 const routes: Routes = [
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'employe',
-    component: EmployeComponent
+    component: EmployeListComponent
   },
   {
     path: '**',
