@@ -9,8 +9,8 @@ export const navigation = [
     icon: 'folder',
     items: [
       {
-        text: 'employe',
-        path: '/employe'
+        text: 'employes',
+        path: '/employes'
       }
     ]
   }

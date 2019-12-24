@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {EmployeService} from '../../../service/employe.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Employee} from '../../../domain/employee';
 
 @Component({
   selector: 'app-employe-detail',
-  templateUrl: './employe-detail.component.html'
+  templateUrl: './employe-detail.component.html',
+  styleUrls: ['./employe-detail.component.scss']
 })
 export class  EmployeDetailComponent implements OnInit {
 
@@ -14,7 +15,8 @@ export class  EmployeDetailComponent implements OnInit {
 
   constructor(
     private employeService: EmployeService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
     console.log(this.id);
   }
@@ -28,5 +30,10 @@ export class  EmployeDetailComponent implements OnInit {
       this.employe = data;
     });
   }
+
+  back() {
+    this.router.navigateByUrl('/employes');
+  }
+
 
 }

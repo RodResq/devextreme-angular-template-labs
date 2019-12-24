@@ -31,11 +31,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'employe',
+    path: 'employes',
     component: EmployeListComponent,
   },
   {
-    path: 'employe/:id',
+    path: 'employes/:id',
     component: EmployeDetailComponent,
   },
   {
