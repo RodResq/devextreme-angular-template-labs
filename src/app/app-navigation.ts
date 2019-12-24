@@ -5,20 +5,13 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Examples',
+    text: 'Datagrid',
     icon: 'folder',
     items: [
       {
-        text: 'Profile',
-        path: '/profile'
-      },
-      {
-        text: 'Display Data',
-        path: '/display-data'
+        text: 'employe',
+        path: '/employe'
       }
     ]
   }
-
-
-
 ];
