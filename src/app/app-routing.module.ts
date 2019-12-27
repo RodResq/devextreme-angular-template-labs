@@ -8,6 +8,7 @@ import {DisplayDataComponent} from './pages/display-data/display-data.component'
 import {DxDataGridModule, DxFormModule} from 'devextreme-angular';
 import {EmployeListComponent} from './pages/employe/employe-list/employe-list.component';
 import {EmployeDetailComponent} from './pages/employe/employe-detail/employe-detail.component';
+import {EmployeEditComponent} from './pages/employe/employe-edit/employe-edit.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'employes/:id',
     component: EmployeDetailComponent,
+  },
+  {
+    path: 'employes/edit/:id',
+    component: EmployeEditComponent,
   },
   {
     path: '**',

@@ -21,4 +21,8 @@ export class EmployeService {
   getEmployById(id): Observable<any> {
     return this.httpClient.get<JSON>(this.urlBase + '/employes/' + id);
   }
+
+  getEmployeEditById(id): Observable<any> {
+    return this.httpClient.put(this.urlBase + '/employes/' + id, null);
+  }
 }

@@ -28,7 +28,6 @@ export class EmployeListComponent implements OnInit {
 
   detail(id: number) {
     this.router.navigate([id], {relativeTo: this.activatedRoute});
-    console.log('test');
   }
 
   addNewEmploye() {
