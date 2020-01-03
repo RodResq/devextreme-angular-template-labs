@@ -11,6 +11,10 @@ export const navigation = [
       {
         text: 'employes',
         path: '/employes'
+      },
+      {
+        text: 'Despesas Agregadas',
+        path: '/despesas-agregadas'
       }
     ]
   }

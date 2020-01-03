@@ -1,0 +1,20 @@
+{
+  "despesas-agregadas": [
+  {
+    "id": "1",
+    "codigo": "0001",
+    "acao-orcamentaria": "20 GP",
+    "nome": "APOIO ADM., TÉCNICO E OPERACIONAL",
+    "descricao": "Man equi Permanantes",
+    "planoInterno": "AOSA APOIO"
+  },
+  {
+    "id": "2",
+    "codigo": "0002",
+    "acao-orcamentaria": "20 GP",
+    "nome": "LIMPEZA E CONSERVAÇÃO",
+    "descricao": "Limpesa e conservacao",
+    "planoInterno": "AIEF LIMPEZ"
+  }
+]
+}

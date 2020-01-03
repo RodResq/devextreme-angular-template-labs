@@ -1,0 +1,53 @@
+<h2 class="content-block">Employe List</h2>
+
+<dx-data-grid
+  [dataSource]="despesasAgregadasDataSource"
+  [allowColumnReordering]="true"
+  [showBorders]="true">
+
+  <dxo-selection mode="single"></dxo-selection>
+
+  <dxo-paging [enabled]="true"></dxo-paging>
+
+  <dxi-column dataField="codigo"></dxi-column>
+  <dxi-column dataField="acao-orcamentaria"></dxi-column>
+  <dxi-column dataField="nome"></dxi-column>
+  <dxi-column dataField="descricao"></dxi-column>
+  <dxi-column dataField="planoInterno"></dxi-column>
+
+  <dxi-column type="buttons"
+      cellTemplate="buttonsTemplate"
+      [allowResizing]="false"
+      [allowReordering]="false"
+      [showInColumnChooser]="false">
+    <div *dxTemplate="let data of 'buttonsTemplate'"
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <dx-button
+        icon="edit"
+        hint="Editar"
+        (onClick)="edit(data.data.id)">
+      </dx-button>
+      <dx-button
+        icon="trash"
+        hint="Excluir"
+        (onClick)="null">
+      </dx-button>
+      <dx-button icon="chevronnext"
+           hint="Ver Detalhes"
+           (onClick)="detail(data.data.id)">
+      </dx-button>
+    </div>
+  </dxi-column>
+
+  <dxo-summary>
+    <dxi-total-item
+      name="Total"
+      column="orderNumber"
+      summaryType="count"
+      showInColumn="date"
+      alignment='center'>
+    </dxi-total-item>
+  </dxo-summary>
+
+</dx-data-grid>

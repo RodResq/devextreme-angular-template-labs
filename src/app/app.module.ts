@@ -7,6 +7,10 @@ import {FooterModule, LoginFormModule} from './shared/components';
 import {AppInfoService, AuthService, ScreenService} from './shared/services';
 import {AppRoutingModule} from './app-routing.module';
 import {EmployeModule} from './pages/employe/employe.module';
+import {BreadcrumbModule} from 'xng-breadcrumb';
+import {DespesaAgregadaModule} from './pages/despesa-agregada/despesa-agregada.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,9 @@ import {EmployeModule} from './pages/employe/employe.module';
     LoginFormModule,
     AppRoutingModule,
     EmployeModule,
+    DespesaAgregadaModule,
+    BreadcrumbModule,
+    MatIconModule
   ],
   providers: [AuthService, ScreenService, AppInfoService],
   bootstrap: [AppComponent]

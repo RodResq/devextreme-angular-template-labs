@@ -1,5 +1,10 @@
 <ng-container *ngIf="isAutorized(); else notAuthorized">
     <app-side-nav-outer-toolbar title="{{appInfo.title}}">
+
+      <xng-breadcrumb [separator]="separatorTemplate" class="myapp-breadcrumb">
+          <mat-icon>home</mat-icon>
+      </xng-breadcrumb>
+
         <router-outlet></router-outlet>
         <app-footer>
             Copyright © 2011-2019 Developer Express Inc.
@@ -13,4 +18,8 @@
     <app-single-card>
         <router-outlet></router-outlet>
     </app-single-card>
+</ng-template>
+
+<ng-template #separatorTemplate>
+  <mat-icon>arrow_right</mat-icon>
 </ng-template>

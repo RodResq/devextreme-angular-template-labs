@@ -1,0 +1,25 @@
+<h2>Despesa Agregada Edit Works</h2>
+<div class="dx-card content-block">
+  <form autocomplete="off"  (submit)="save($event)">
+    <div class="adx-form">
+
+
+      <div class="adx-form-footer">
+        <dx-validation-summary id="summary"></dx-validation-summary>
+        <div class="adx-form-buttons">
+          <dx-button
+             text="Cancelar"
+             type="fail"
+             [useSubmitBehavior]="false">
+          </dx-button>
+          <span fxFlex></span>
+          <dx-button
+             text="Salvar"
+             type="success"
+             [useSubmitBehavior]="true">
+          </dx-button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

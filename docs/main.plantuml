@@ -1,0 +1,278 @@
+/' Arquivo com diagrama de classe principal do projeto.
+Para visualizar o diagrama instale o plugin do eclipse, ver instrucões em: http://plantuml.com/eclipse '/
+
+@startuml
+skinparam defaultFontName Monospace
+skinparam ClassBackgroundColor<<View>> LightCyan
+skinparam ClassBackgroundColor<<Embeddable>> WhiteSmoke
+skinparam nodesep 10
+skinparam ranksep 10
+/'left to right direction'/
+
+/' Pacote com as delcarações de classes do plantuml (http://plantuml.com/class-diagram)
+class Pessoa {
+	- id: Long {id}
+	- nome: String[100]
+	- login: String[50]
+	- cpf: String[11]
+	- telefone: String[11]
+	- altura: Long
+	- peso: Long
+	- ativo: Boolean
+	- dataNasc: LocalDateTime
+	- dataInicio: LocalDateTime
+	- pessoaType: PessoaType
+	- descricao: String[1000]
+	-- tagged values --
+	<b>@table.name</b>: CR_PESSOA
+	<b>@cpf.label</b>: CPF
+	<b>@cpf.mask</b>: 000.000.000-00
+	<b>@telefone.mask</b>: (00) 00000-0000
+	<b>@dataNasc.label</b>: Nascimento
+	<b>@dataInicio.label</b>: Início de Exercício
+	<b>@descricao.label</b>: Descrição
+}
+'/
+
+
+package "br.jus.tre_pa.sof.domain" <<Frame>> {
+
+	class OrcamentoAutorizado {
+		- id: Long {id}
+		- exercicio: LocalDate
+		- totalInicial: BigDecimal
+	}
+
+	class AcaoOrcamentaria {
+		- id: Long {id}
+		- nome: String
+		- dotacaoFixada: BigDecimal
+	}
+
+
+	class MacroUnidade {
+		- id: Long {id}
+		- nome: String
+	}
+
+	class UnidadeGestoraResponsavel {
+		- id: Long {id}
+		- nome: String
+		- sigla: String
+	}
+
+
+
+	class GrupoDespesa {
+		- id: Long {id}
+		- codigo: Long
+		- nome: String
+	}
+
+	class Ptres {
+		- id: Long {id}
+		- codigo: Long
+		- nome: String
+	}
+
+	class DespesaAgregada {
+		- id: Long {id}
+		- codigo: Long
+		- nome: String
+		- descricao: String
+	}
+
+	class PlanoInterno {
+		- id: Long {id}
+		- nome: String
+	}
+
+	class Elemento {
+		- id: Long {id}
+		- codigo: string
+	}
+
+	class ItemElemento {
+		- id: Long {id}
+		- descricao: string
+		- dotacaoFixada: BigDecimal
+	}
+
+	class OperacaoOrcamentaria {
+		- id: Long {id}
+		- tipo: OperacaoOrcamentariaType
+		- oficioTse: String
+		- documentoSiaf: String
+		- enventoSei: String
+		- registradaSiafEm: LocalDateTime
+		- valor: BigDecimal
+		- observacao: String[2048]
+	}
+
+
+	class SolicitacaoEmpenho {
+		- id: Long {id}
+		- descricao: String[2048]
+		- processoSei: String {notnull}
+		- eventoSei: String
+		- status: String[2048]
+		- solicitadoPor: String
+		- solicitadoEm: LocalDateTime
+	}
+
+	class ItemSolicitacaoEmpenho {
+		- id: Long {id}
+		- valor: BigDecimal
+		- solicitadoEm: LocalDateTime
+	}
+
+	class ItemSolicitacaoEmpenhoType {
+		- id: Long {id}
+		- descricao: String
+		- valorObrigatorio: boolean
+		- notaEmpenhoAssociadoObrigatorio: boolean
+		- justificativaObrigatoria: boolean
+		- fatorMutiplicador: Integer[1]
+
+	}
+
+
+	class PreEmpenho {
+		- id: Long {id}
+		- numero: String
+		- tipo: PreEmpenhoType
+		- valor: BigDecimal
+		- emissaoEm: LocalDateTime
+		- reversao: boolean
+
+	}
+
+	class NotaEmpenho {
+		- id: Long {id}
+		- numeroSiaf: String
+		- especie: NotaEmpenhoEspecieType
+		- dataEmissaoSiafEm: LocalDateTime
+		- emitidoSiafPor: String
+		- subItem: string
+		- valor: BigDecimal
+		- criadoEm: LocalDateTime
+		- criadoPor: LocalDateTime
+		- status: StatusNotaEmpenhoType
+	}
+
+
+}
+
+package "br.jus.tre_pa.sof.domain.enums" <<Frame>>{
+
+	' enum SolicitacaoEmpenhoType {
+		'     EMISSAO_NOTA_EMPENHO
+		'     REFORCO_NOTA_EMPENHO
+		'     ANULACAO_NOTA_EMPENHO
+		' 	  REPACTUACAO_NOTA_EMPENHO
+		' 	  REAJUSTE_NOTA_EMPENHO
+		'  	  REVERSAO_PRE_EMPENHO
+
+		'
+	'}
+
+	enum PreEmpenhoType {
+		EMISSAO_DE_EMPENHO
+		EMISSAO_DE_REFORCO
+		REVERSAO_DO_PRE_EMPENHO
+		EMISSAO_REPACTUACAO
+		EMISSAO_REAJUSTE
+	}
+
+	enum NotaEmpenhoEspecieType {
+		EMISSAO
+		REFORCO
+		ANULACAO
+	}
+
+	enum OperacaoOrcamentariaType {
+		SUPLEMENTACAO
+		REMANEJAMENTO
+		CONTIGENCIAMENTO
+		DESCONTIGENCIAMENTO
+	}
+
+
+
+	enum StatusSolicitacaoEmpenhoType {
+		INICIADO
+		PRE_EMPENHO_GERADO
+		EMPENHO_GERADO
+		CANCELADO
+	}
+
+	enum StatusPreEmpenhoType {
+		GERADA
+		EMPENHO_GERADO
+		CANCELADO
+	}
+
+	enum StatusNotaEmpenhoType {
+		GERADO
+		RESTOS_A_PAGAR
+	}
+
+}
+
+package "br.jus.tre_pa.sof.domain.views" <<Frame>>{
+	class VwOrcamento {
+		- id: Long {id}
+		- orcamentoAutorizadoId:Long
+		- acaoOrcamentariaId:Long
+		- ptresId:Long
+		- grupoDespesaId:Long
+		- despesaAgregadaId: Long
+		- planoInternoId: Long
+		- elementoId: Long
+		- ugrId: Long
+		- macroUnidadeId: Long
+		- contingenciamento: BigDecimal
+		- suplementacao: BigDecimal
+		- remanejamento: BigDecimal
+		- dotacaoAtualizada: BigDecimal
+		- disponivelSolicitacao: BigDecimal
+		- preEmpenho: BigDecimal
+		- disponivelPreEmpenho: BigDecimal
+		- notaEmpenho: BigDecimal
+		- disponivelNotaEmpenho: BigDecimal
+		- disponivel: BigDecimal
+	}
+}
+
+
+
+
+OrcamentoAutorizado "1" -down- "1..*" AcaoOrcamentaria: possui >
+AcaoOrcamentaria "1" -right- "1..*" Ptres: possui >
+Ptres "1" -right- "1..*" GrupoDespesa: possui >
+GrupoDespesa "1" -down- "1..*" DespesaAgregada: possui >
+DespesaAgregada "1..*" -down- "1..*" PlanoInterno: possui >
+PlanoInterno "1..*" -down- "1..*" ItemElemento: possui >
+ItemElemento "1" -right- "1" Elemento: possui >
+ItemElemento "1" --> "0..*" ItemSolicitacaoEmpenho
+ItemSolicitacaoEmpenho "0..*" -left- "1" ItemSolicitacaoEmpenhoType: possui >
+ItemSolicitacaoEmpenho "0..*" -down-> "1"  NotaEmpenho: NEReferenciada >
+ItemSolicitacaoEmpenho "1" -down-> "0..*"  NotaEmpenho: Gera <
+ItemSolicitacaoEmpenho "0..*" -right-> "0..*" PreEmpenho: PreEmpenhoReferenciado >
+ItemSolicitacaoEmpenho "1" -right-> "0..*" PreEmpenho: Gera >
+NotaEmpenho "1" --> "0..*" NotaEmpenho: notasEmpenhosAssociadas >
+PreEmpenho "0..*" <-- "0..*" PreEmpenho: preEmpenhosAssociados
+PreEmpenho "0..*" -right-  "0..*" NotaEmpenho: gera >
+ItemElemento "1" --> "0..*" NotaEmpenho
+ItemElemento "1" --> "0..*" PreEmpenho
+
+'UnidadeGestoraResponsavel "1..*" -up- "1" MacroUnidade: possui <
+UnidadeGestoraResponsavel "1" -right- "0..*" ItemElemento: possui >
+OperacaoOrcamentaria "0..*" -- "1" ItemElemento: possui <
+OperacaoOrcamentaria "0..*"  -- "0..*"  OperacaoOrcamentaria: operacoesOrcamentariaAssociadas >
+'ItemElemento -right- OperacaoOrcamentaria: possui <
+SolicitacaoEmpenho "1" -- "1..*" ItemSolicitacaoEmpenho: possui >
+UnidadeGestoraResponsavel "1" -left- "0..*" SolicitacaoEmpenho: possui >
+UnidadeGestoraResponsavel "1..*" -- "1" UnidadeGestoraResponsavel: MacroUnidade
+
+@enduml

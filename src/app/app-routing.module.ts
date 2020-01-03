@@ -8,6 +8,8 @@ import {DisplayDataComponent} from './pages/display-data/display-data.component'
 import {DxDataGridModule, DxFormModule} from 'devextreme-angular';
 import {EmployeListComponent} from './pages/employe/employe-list/employe-list.component';
 import {EmployeDetailComponent} from './pages/employe/employe-detail/employe-detail.component';
+import {DespesaAgregadaListComponent} from './pages/despesa-agregada/despesa-agregada-list/despesa-agregada-list.component';
+import {DespesaAgregadaEditComponent} from './pages/despesa-agregada/despesa-agregada-edit/despesa-agregada-edit.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,12 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    data: {
+      breadcrumb: {
+        label: 'Home',
+        info: { mydata: { icon: 'home', iconType: 'material' } }
+      }
+    },
     canActivate: [ AuthGuardService ]
   },
   {
@@ -39,6 +47,20 @@ const routes: Routes = [
     component: EmployeDetailComponent,
   },
   {
+    path: 'despesas-agregadas',
+    component: DespesaAgregadaListComponent,
+  },
+  {
+    path: 'despesas-agregadas/edit/:id',
+    component: DespesaAgregadaEditComponent,
+    data: {
+      breadcrumb: {
+        label: 'Despasa-agregada/Edit',
+        info: { mydata: { icon: 'home', iconType: 'material' } }
+      }
+    },
+  },
+  {
     path: '**',
     redirectTo: 'home',
     canActivate: [ AuthGuardService ]
@@ -46,7 +68,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), DxDataGridModule, DxFormModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    DxDataGridModule,
+    DxFormModule,
+  ],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [HomeComponent, ProfileComponent, DisplayDataComponent]
