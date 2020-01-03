@@ -18,7 +18,6 @@ export class  EmployeDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
   }
 
   ngOnInit(): void {
@@ -33,6 +32,10 @@ export class  EmployeDetailComponent implements OnInit {
 
   back() {
     this.router.navigateByUrl('/employes');
+  }
+
+  edit() {
+    this.router.navigateByUrl('/employes/edit/' + this.id);
   }
 
 

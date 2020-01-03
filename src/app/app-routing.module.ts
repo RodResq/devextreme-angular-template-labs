@@ -10,6 +10,7 @@ import {EmployeListComponent} from './pages/employe/employe-list/employe-list.co
 import {EmployeDetailComponent} from './pages/employe/employe-detail/employe-detail.component';
 import {DespesaAgregadaListComponent} from './pages/despesa-agregada/despesa-agregada-list/despesa-agregada-list.component';
 import {DespesaAgregadaEditComponent} from './pages/despesa-agregada/despesa-agregada-edit/despesa-agregada-edit.component';
+import {EmployeEditComponent} from './pages/employe/employe-edit/employe-edit.component';
 
 const routes: Routes = [
   {
@@ -56,9 +57,13 @@ const routes: Routes = [
     data: {
       breadcrumb: {
         label: 'Despasa-agregada/Edit',
-        info: { mydata: { icon: 'home', iconType: 'material' } }
+        info: {mydata: {icon: 'home', iconType: 'material'}}
       }
-    },
+    }
+  },
+  {
+    path: 'employes/edit/:id',
+    component: EmployeEditComponent,
   },
   {
     path: '**',
