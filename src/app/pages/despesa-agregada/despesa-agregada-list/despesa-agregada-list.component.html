@@ -4,12 +4,19 @@
   [dataSource]="despesasAgregadasDataSource"
   [allowColumnReordering]="true"
   [showBorders]="true">
-
-  <dxo-selection mode="single"></dxo-selection>
-
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-search-panel [visible]="true" [width]="240"
+    placeholder="Search..."></dxo-search-panel>
   <dxo-paging [enabled]="true"></dxo-paging>
 
-  <dxi-column dataField="codigo"></dxi-column>
+  <dxi-column
+    dataField="codigo"
+    [allowFiltering]="true"
+    [allowHeaderFiltering]="true"
+    [allowSearch]="true">
+    <dxo-header-filter></dxo-header-filter>
+  </dxi-column>
   <dxi-column dataField="acao-orcamentaria"></dxi-column>
   <dxi-column dataField="nome"></dxi-column>
   <dxi-column dataField="descricao"></dxi-column>
