@@ -7,7 +7,6 @@ import {DespesaAgregadaDetailComponent} from './despesa-agregada-detail/despesa-
 const routes: Routes = [
   {
     path: '',
-    component: DespesaAgregadaListComponent,
     children: [
       {
         path: ':id',
@@ -17,8 +16,12 @@ const routes: Routes = [
             component: DespesaAgregadaDetailComponent
           }
         ]
+      },
+      {
+        path: '',
+        component: DespesaAgregadaListComponent
       }
-    ]
+    ],
   }
 ]
 

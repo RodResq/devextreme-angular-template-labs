@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-despesa-agregada-list',
-  templateUrl: './despesa-agregada-list.html'
+  templateUrl: './despesa-agregada-list.component.html'
 })
 export class DespesaAgregadaListComponent {
   despesasAgregadasDataSource: DataSource;
