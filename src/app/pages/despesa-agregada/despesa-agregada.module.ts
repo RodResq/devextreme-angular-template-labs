@@ -1,6 +1,9 @@
 import {NgModule} from '@angular/core';
-import {DxButtonModule, DxDataGridModule, DxValidationSummaryModule} from 'devextreme-angular';
+import {DxButtonModule, DxDataGridModule, DxFormModule, DxValidationSummaryModule} from 'devextreme-angular';
 import {DESPESA_AGREGADA_ROUTE_COMPONENTS, DespesaAgregadaRoutingModule} from './despesa-agregada.routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [ DESPESA_AGREGADA_ROUTE_COMPONENTS ],
@@ -9,6 +12,12 @@ import {DESPESA_AGREGADA_ROUTE_COMPONENTS, DespesaAgregadaRoutingModule} from '.
     DxButtonModule,
     DxValidationSummaryModule,
     DespesaAgregadaRoutingModule,
+    DxDataGridModule,
+    DxButtonModule,
+    DxFormModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
   exports: []
 })

@@ -6,7 +6,6 @@ import {SideNavInnerToolbarModule, SideNavOuterToolbarModule, SingleCardModule} 
 import {FooterModule, LoginFormModule} from './shared/components';
 import {AppInfoService, AuthService, ScreenService} from './shared/services';
 import {AppRoutingModule} from './app-routing.module';
-import {EmployeModule} from './pages/employe/employe.module';
 import {BreadcrumbModule} from 'xng-breadcrumb';
 import {DespesaAgregadaModule} from './pages/despesa-agregada/despesa-agregada.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,7 +24,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterModule,
     LoginFormModule,
     AppRoutingModule,
-    EmployeModule,
     DespesaAgregadaModule,
     BreadcrumbModule,
     MatIconModule,
