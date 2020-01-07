@@ -21,10 +21,10 @@ export class DespesaAgregadaListComponent {
   }
 
   detail(id: number) {
+    this.router.navigate(['despesas-agregadas', id]);
   }
 
   edit(id: number) {
-    console.log(id);
     this.router.navigate(['despesas-agregadas', 'edit', id]);
     console.log(this.router.url);
   }

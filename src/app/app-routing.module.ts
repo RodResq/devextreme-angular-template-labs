@@ -11,6 +11,7 @@ import {EmployeDetailComponent} from './pages/employe/employe-detail/employe-det
 import {DespesaAgregadaListComponent} from './pages/despesa-agregada/despesa-agregada-list/despesa-agregada-list.component';
 import {DespesaAgregadaEditComponent} from './pages/despesa-agregada/despesa-agregada-edit/despesa-agregada-edit.component';
 import {EmployeEditComponent} from './pages/employe/employe-edit/employe-edit.component';
+import {DespesaAgregadaDetailComponent} from './pages/despesa-agregada/despesa-agregada-detail/despesa-agregada-detail.component';
 
 const routes: Routes = [
   {
@@ -40,30 +41,8 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'employes',
-    component: EmployeListComponent,
-  },
-  {
-    path: 'employes/:id',
-    component: EmployeDetailComponent,
-  },
-  {
     path: 'despesas-agregadas',
-    component: DespesaAgregadaListComponent,
-  },
-  {
-    path: 'despesas-agregadas/edit/:id',
-    component: DespesaAgregadaEditComponent,
-    data: {
-      breadcrumb: {
-        label: 'Despasa-agregada/Edit',
-        info: {mydata: {icon: 'home', iconType: 'material'}}
-      }
-    }
-  },
-  {
-    path: 'employes/edit/:id',
-    component: EmployeEditComponent,
+    loadChildren: './pages/despesa-agregada/despesa-agregada.module#DespesaAgregadaModule'
   },
   {
     path: '**',

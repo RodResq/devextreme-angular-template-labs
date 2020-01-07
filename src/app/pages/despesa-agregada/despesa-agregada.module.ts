@@ -1,19 +1,14 @@
 import {NgModule} from '@angular/core';
-import {DespesaAgregadaListComponent} from './despesa-agregada-list/despesa-agregada-list.component';
-import {BrowserModule} from '@angular/platform-browser';
 import {DxButtonModule, DxDataGridModule, DxValidationSummaryModule} from 'devextreme-angular';
-import {DespesaAgregadaEditComponent} from './despesa-agregada-edit/despesa-agregada-edit.component';
+import {DESPESA_AGREGADA_ROUTE_COMPONENTS, DespesaAgregadaRoutingModule} from './despesa-agregada.routing.module';
 
 @NgModule({
-  declarations: [
-    DespesaAgregadaListComponent,
-    DespesaAgregadaEditComponent
-  ],
+  declarations: [ DESPESA_AGREGADA_ROUTE_COMPONENTS ],
   imports: [
-    BrowserModule,
     DxDataGridModule,
     DxButtonModule,
-    DxValidationSummaryModule
+    DxValidationSummaryModule,
+    DespesaAgregadaRoutingModule,
   ],
   exports: []
 })

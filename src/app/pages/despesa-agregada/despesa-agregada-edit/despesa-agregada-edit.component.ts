@@ -1,12 +1,17 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BreadcrumbService} from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-desp-agregada-edit',
   templateUrl: './despesa-agregada-edit.component.html'
 })
-export class DespesaAgregadaEditComponent {
+export class DespesaAgregadaEditComponent implements OnInit {
 
-  constructor() {
+  constructor(private breadcrumbService: BreadcrumbService) {
+  }
+
+  ngOnInit(): void {
+    this.breadcrumbService.set('@test-dinamicaly', 'teste');
   }
 
   save(event) {

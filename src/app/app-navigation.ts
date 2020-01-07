@@ -8,10 +8,10 @@ export const navigation = [
     text: 'Datagrid',
     icon: 'folder',
     items: [
-      {
-        text: 'employes',
-        path: '/employes'
-      },
+      // {
+      //   text: 'employes',
+      //   path: '/employes'
+      // },
       {
         text: 'Despesas Agregadas',
         path: '/despesas-agregadas'

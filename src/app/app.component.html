@@ -2,7 +2,9 @@
     <app-side-nav-outer-toolbar title="{{appInfo.title}}">
 
       <xng-breadcrumb [separator]="separatorTemplate" class="myapp-breadcrumb">
-          <mat-icon>home</mat-icon>
+        <ng-container *xngBreadcrumbItem="let breadcrumb; let info = info; let first = first">
+          <ng-container>{{ breadcrumb | titlecase }}</ng-container>
+        </ng-container>
       </xng-breadcrumb>
 
         <router-outlet></router-outlet>
@@ -21,5 +23,5 @@
 </ng-template>
 
 <ng-template #separatorTemplate>
-  <mat-icon>arrow_right</mat-icon>
+  <fa-icon [icon]="faCoffee"></fa-icon>
 </ng-template>
