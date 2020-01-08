@@ -1,1 +1,27 @@
-<h2>Despesa Agregada detail Works</h2>
+<div class="content-block">
+  <h2 fxLayout="row"
+      fxLayoutAlign="space-between center">Despesa Agregada
+    <dx-button text="Excluir"
+       type="default"
+       (onClick)="null"></dx-button>
+  </h2>
+
+  <div class="dx-card responsive-paddings">
+    <p><b>Codigo: </b>{{ despesaAgregada.codigo }}</p>
+    <p><b>Nome: </b>{{ despesaAgregada.nome }}</p>
+    <p><b>Descrição: </b>{{ despesaAgregada.descricao }}</p>
+    <p><b>Ação Orçamentária: </b>{{ despesaAgregada.acaoOrcamentaria }}</p>
+    <p><b>Plano Interno: </b>{{ despesaAgregada.planoInterno }}</p>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <dx-button text="Voltar"
+      (onClick)="back()"></dx-button>
+      <dx-button text="Editar"
+                 type="success"
+                 style="margin-right: 10px;"
+                 (onClick)="null"></dx-button>
+    </div>
+
+  </div>
+</div>

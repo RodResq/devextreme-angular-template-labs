@@ -20,6 +20,7 @@ const routes: Routes = [
     path: 'despesas-agregadas',
     loadChildren: './pages/despesa-agregada/despesa-agregada.module#DespesaAgregadaModule'
   },
+  { path: '**', pathMatch: 'full', component: HomeComponent }
 ];
 
 @NgModule({
