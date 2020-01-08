@@ -18,7 +18,10 @@ const routes: Routes = [
   },
   {
     path: 'despesas-agregadas',
-    loadChildren: './pages/despesa-agregada/despesa-agregada.module#DespesaAgregadaModule'
+    loadChildren: './pages/despesa-agregada/despesa-agregada.module#DespesaAgregadaModule',
+    data: {
+      breadcrumb: {alias: 'despesa-agregada-list'},
+    }
   },
   { path: '**', pathMatch: 'full', component: HomeComponent }
 ];

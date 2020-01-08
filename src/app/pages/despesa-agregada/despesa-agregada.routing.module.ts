@@ -10,12 +10,12 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        children: [
-          {
-            path: '',
-            component: DespesaAgregadaDetailComponent
+        component: DespesaAgregadaDetailComponent,
+        data: {
+          breadcrumb: {
+            alias: 'despesa-agregada-detail'
           }
-        ]
+        },
       },
       {
         path: '',

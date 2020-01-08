@@ -3,6 +3,8 @@ import DevExpress from 'devextreme';
 import DataSource = DevExpress.data.DataSource;
 import {DespesaAgregadaService} from '../../../service/despesa-agregada.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {BreadcrumbService} from 'xng-breadcrumb';
+import {DespesaAgregada} from '../../../domain/despesa-agregada';
 
 @Component({
   selector: 'app-despesa-agregada-list',
@@ -14,9 +16,11 @@ export class DespesaAgregadaListComponent {
   constructor(
     private despesaAgregadaService: DespesaAgregadaService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private breadcrumbService: BreadcrumbService) {
     this.despesaAgregadaService.getDepesasAgregadas().subscribe((data) => {
       this.despesasAgregadasDataSource = data || [];
+      this.breadcrumbService.set('@despesa-agregada-list', 'Despesas-agregadas-list');
     });
   }
 

@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DespesaAgregadaService} from '../../../service/despesa-agregada.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DespesaAgregada} from '../../../domain/despesa-agregada';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {BreadcrumbService} from 'xng-breadcrumb';
 
 
 @Component({
@@ -18,12 +19,14 @@ export class DespesaAgregadaDetailComponent {
   constructor(
     private despesaAgregadaService: DespesaAgregadaService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private breadcrumbService: BreadcrumbService) {
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
     this.despesaAgregadaService.getDepesaAgregadaById(this.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((dado) => {
       this.despesaAgregada = dado;
+      this.breadcrumbService.set('@despesa-agregada-detail', 'despesa-agregada-' + this.despesaAgregada.id);
     });
   }
 
