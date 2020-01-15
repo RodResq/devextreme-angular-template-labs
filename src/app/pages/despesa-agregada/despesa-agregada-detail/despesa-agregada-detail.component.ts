@@ -33,4 +33,8 @@ export class DespesaAgregadaDetailComponent {
   back() {
     this.router.navigate(['despesas-agregadas']);
   }
+
+  edit() {
+    this.router.navigate(['despesas-agregadas', 'edit', this.despesaAgregada.id]);
+  }
 }

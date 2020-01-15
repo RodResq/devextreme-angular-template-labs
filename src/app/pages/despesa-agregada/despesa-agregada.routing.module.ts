@@ -1,3 +1,4 @@
+import { DespesaAgregadaEditComponent } from './despesa-agregada-edit/despesa-agregada-edit.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {DespesaAgregadaListComponent} from './despesa-agregada-list/despesa-agregada-list.component';
@@ -18,10 +19,28 @@ const routes: Routes = [
         },
       },
       {
+        path: 'edit',
+        children: [
+          {
+            path: ':id',
+            component: DespesaAgregadaEditComponent,
+            data: {
+              breadcrumb: {
+                alias: 'despesa-agregada-edit'
+              }
+            }
+          }
+        ]
+
+      },
+      {
         path: '',
         component: DespesaAgregadaListComponent
       }
     ],
+  },
+  {
+    path: '**', component: DespesaAgregadaListComponent
   }
 ]
 
@@ -34,7 +53,8 @@ export class DespesaAgregadaRoutingModule { }
 
 export const DESPESA_AGREGADA_ROUTE_COMPONENTS = [
   DespesaAgregadaListComponent,
-  DespesaAgregadaDetailComponent
+  DespesaAgregadaDetailComponent,
+  DespesaAgregadaEditComponent
 ];
 
 

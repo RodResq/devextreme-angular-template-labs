@@ -5,13 +5,8 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Datagrid',
-    icon: 'folder',
-    items: [
-      {
-        text: 'Despesas Agregadas',
-        path: '/despesas-agregadas'
-      }
-    ]
+    text: 'Despesas Agregadas',
+    path: '/despesas-agregadas',
+    icon: 'box'
   }
 ];

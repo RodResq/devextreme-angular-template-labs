@@ -1,25 +1,82 @@
-<h2>Despesa Agregada Edit Works</h2>
+<h2>Despesa Agregada</h2>
 <div class="dx-card content-block">
-  <form autocomplete="off"  (submit)="save($event)">
+  <form 
+    autocomplete="off"
+    (submit)="save($event)">
     <div class="adx-form">
-
+        <div class="row">
+					<div class="adx-form-field responsive-small-field">
+            <div class="adx-form-field-label">Nome</div>
+            <div class="adx-form-field-editor">           
+              <dx-text-box 
+                [(ngModel)]="despesaAgregada.nome"
+                [(value)]="despesaAgregada.nome" 
+                name="Despesa Agregada">
+                <dx-validator>
+                </dx-validator>
+              </dx-text-box>
+            </div>
+          </div>
+          
+          <div class="adx-form-field responsive-small-field">
+            <div class="adx-form-field-label">Codigo</div>
+            <div class="adx-form-field-editor">           
+              <dx-text-box 
+                [(ngModel)]="despesaAgregada.codigo"
+                [(value)]="despesaAgregada.codigo" 
+                name="Despesa Agregada">
+                <dx-validator>
+                </dx-validator>
+              </dx-text-box>
+            </div>
+          </div>
+        </div> 
+        
+        <div class="row">
+					<div class="adx-form-field responsive-small-field">
+            <div class="adx-form-field-label">Ação Orçamentaria</div>
+            <div class="adx-form-field-editor">           
+              <dx-text-box 
+                [(ngModel)]="despesaAgregada.acaoOrcamentaria"
+                [(value)]="despesaAgregada.acaoOrcamentaria" 
+                name="Despesa Agregada">
+                <dx-validator>
+                </dx-validator>
+              </dx-text-box>
+            </div>
+          </div>
+          
+          <div class="adx-form-field responsive-small-field">
+            <div class="adx-form-field-label">Descrição</div>
+            <div class="adx-form-field-editor">           
+              <dx-text-box 
+                [(ngModel)]="despesaAgregada.descricao"
+                [(value)]="despesaAgregada.descricao" 
+                name="Despesa Agregada">
+                <dx-validator>
+                </dx-validator>
+              </dx-text-box>
+            </div>
+          </div>
+        </div>  
 
       <div class="adx-form-footer">
-        <dx-validation-summary id="summary"></dx-validation-summary>
-        <div class="adx-form-buttons">
-          <dx-button
-             text="Cancelar"
-             type="fail"
-             [useSubmitBehavior]="false">
-          </dx-button>
-          <span fxFlex></span>
-          <dx-button
-             text="Salvar"
-             type="success"
-             [useSubmitBehavior]="true">
-          </dx-button>
-        </div>
-      </div>
+				<dx-validation-summary id="summary"></dx-validation-summary>
+				<div class="adx-form-buttons">
+					<dx-button id="button"
+						text="Cancelar"
+						type="fail"
+						[useSubmitBehavior]="false">
+					</dx-button>
+					<span fxFlex></span>
+					<dx-button id="button"
+						text="Salvar"
+						type="success"
+						[useSubmitBehavior]="true"
+						[disabled]="null">
+					</dx-button>
+				</div>
+			</div>
     </div>
-  </form>
+	</form>
 </div>
