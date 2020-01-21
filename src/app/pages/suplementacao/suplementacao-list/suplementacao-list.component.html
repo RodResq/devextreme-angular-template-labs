@@ -1,0 +1,98 @@
+<h2>Suplementacoes</h2>
+<dx-data-grid id="suplementacaoGridContainer"
+              [dataSource]="suplementacaoDataSource"
+              [allowColumnReordering]="true"
+              [allowColumnResizing]="true"
+              [columnAutoWidth]="true"
+              [wordWrapEnabled]="true"
+              [cellHintEnabled]="true"
+              [remoteOperations]="true"
+              (onToolbarPreparing)="null"
+              (onToolbarPreparing)="null">
+    <!-- Para ter scroll horizontal (muitas colunas) se aconselha
+      usar essas propriedades abaixo na tag dx-data-grid e usar
+      também o dxo-column-chooser assim como o dxo-column-fixing -->
+    <!-- columnResizingMode="widget"
+      width="100%" -->
+    <!-- <dxo-column-chooser [enabled]="true"
+      mode="select"
+      height="350"
+      width="300"></dxo-column-chooser>
+    <dxo-column-fixing [enabled]="true"></dxo-column-fixing> -->
+    <!-- <dxo-state-storing [enabled]="true"
+      type="localStorage"
+      storageKey="contrato-list-storage"></dxo-state-storing> -->
+    <dxo-sorting mode="multiple"></dxo-sorting>
+    <dxo-paging [pageSize]="pageSize"></dxo-paging>
+    <dxo-pager [allowedPageSizes]="[pageSize]"
+               [showNavigationButtons]="true"
+               [showInfo]="true"></dxo-pager>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-search-panel [visible]="true"
+                      [width]="300"></dxo-search-panel>
+
+    <!-- Oficio Tse -->
+    <dxi-column dataField="oficioTse"
+                caption="Oficio Tse"
+                alignment="left"
+                [allowHeaderFiltering]="false">
+    </dxi-column>
+    
+
+    <!-- Oficio Tse -->
+    <dxi-column dataField="registroSiafEm"
+                caption="Data"
+                alignment="left"
+                dataType="date"
+                [allowHeaderFiltering]="false">
+    </dxi-column>
+    <!-- Valor -->
+    <dxi-column dataField="valor"
+                caption="Valor"
+                alignment="left"
+                [allowHeaderFiltering]="false">
+    </dxi-column>
+
+    <!-- documentoSiaf -->
+    <dxi-column dataField="documentoSiaf"
+                caption="Documento Siafi"
+                alignment="left"
+                [allowHeaderFiltering]="false">
+    </dxi-column>
+
+    <!-- enventoSei -->
+    <dxi-column dataField="eventoSei"
+                caption="Evento Sei"
+                alignment="left"
+                [allowHeaderFiltering]="false">
+    </dxi-column>
+
+    <!-- BUTTONS -->
+    <dxi-column type="buttons"
+                cellTemplate="buttonsTemplate"
+                [allowResizing]="false"
+                [allowReordering]="false"
+                [showInColumnChooser]="false">
+        <div *dxTemplate="let data of 'buttonsTemplate'"
+             fxLayout="row"
+             fxLayoutAlign="space-between center">
+            <dx-button icon="edit"
+                       hint="Editar"
+                       (onClick)="null">
+            </dx-button>
+            <!-- <dx-button icon="trash"
+                       hint="Excluir"
+                       (onClick)="null">
+            </dx-button> -->
+            <dx-button icon="chevronnext"
+                       hint="Ver Detalhes"
+                       (onClick)="null">
+            </dx-button>
+        </div>
+    </dxi-column>
+    <!-- SUMMARY -->
+    <dxo-summary>
+
+    </dxo-summary>
+</dx-data-grid>

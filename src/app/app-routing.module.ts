@@ -30,6 +30,9 @@ const routes: Routes = [
       breadcrumb: {alias: 'orcamento-autorizado-list'},
     }
   },
+  {
+    path: 'suplementacoes', loadChildren: './pages/suplementacao/suplementacao.module#SuplementacaoModule',
+  },
   { path: '**', pathMatch: 'full', component: HomeComponent }
 ];
 

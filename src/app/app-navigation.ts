@@ -13,5 +13,10 @@ export const navigation = [
     text: 'Orçamento Autorizado',
     path: '/orcamentos-autorizados',
     icon: 'box'
+  },
+  {
+    text: 'Suplementações',
+    path: '/suplementacoes',
+    icon: 'box'
   }
 ];
