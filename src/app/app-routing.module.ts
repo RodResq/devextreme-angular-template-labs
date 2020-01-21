@@ -23,6 +23,13 @@ const routes: Routes = [
       breadcrumb: {alias: 'despesa-agregada-list'},
     }
   },
+  {
+    path: 'orcamentos-autorizados',
+    loadChildren: './pages/orcamento-autorizado/orcamento-autorizado.module#OrcamentoAutorizadoModule',
+    data: {
+      breadcrumb: {alias: 'orcamento-autorizado-list'},
+    }
+  },
   { path: '**', pathMatch: 'full', component: HomeComponent }
 ];
 

@@ -1,0 +1,14 @@
+{
+  "orcamento-autorizado": [
+    {
+      "id": 1,
+      "diponivelEm": "Indisponível",
+      "processoSei": "0001084-35.2019.6.14.8000",
+      "inicioVigenciaEm": "12/01/2020",
+      "fimVigenciaEm": "21/12/2020",
+      "dotacaoFixadaEm":  "231.844.746,67",
+      "disponivelSolicitar": "29.477.209,72",
+      "disponivelPreEmpenho": "29.477.209,72"
+    }
+  ]
+}

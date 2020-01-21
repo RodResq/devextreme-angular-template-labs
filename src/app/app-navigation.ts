@@ -8,5 +8,10 @@ export const navigation = [
     text: 'Despesas Agregadas',
     path: '/despesas-agregadas',
     icon: 'box'
+  },
+  {
+    text: 'Orçamento Autorizado',
+    path: '/orcamentos-autorizados',
+    icon: 'box'
   }
 ];

@@ -4,22 +4,27 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import { DespesaAgregada } from '../domain/despesa-agregada';
+import { filter } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root'})
 export class DespesaAgregadaService {
 
   urlBase: string =  environment.serverUrl;
+  despesaAgregada: Observable<any[]>;
 
   constructor(
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute
   ) { }
 
-  getDepesasAgregadas(): Observable<any> {
-    return this.httpClient.get<JSON>(this.urlBase + '/despesas-agregadas');
+  getDepesasAgregadas(): Observable<any[]>{
+    return this.httpClient.get<JSON[]>(this.urlBase + '/db');
+      
   }
 
   getDepesaAgregadaById(id: number): Observable<DespesaAgregada> {
     return this.httpClient.get<DespesaAgregada>(this.urlBase + '/despesas-agregadas/' + id);
   }
+
+
 }

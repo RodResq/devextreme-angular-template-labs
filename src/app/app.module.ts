@@ -1,3 +1,4 @@
+import { OrcamentoAutorizadoModule } from './pages/orcamento-autorizado/orcamento-autorizado.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -25,6 +26,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginFormModule,
     AppRoutingModule,
     DespesaAgregadaModule,
+    OrcamentoAutorizadoModule,
     BreadcrumbModule,
     MatIconModule,
     FontAwesomeModule

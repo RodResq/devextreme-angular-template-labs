@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import DevExpress from 'devextreme';
-import DataSource = DevExpress.data.DataSource;
-import {DespesaAgregadaService} from '../../../service/despesa-agregada.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BreadcrumbService} from 'xng-breadcrumb';
-import {DespesaAgregada} from '../../../domain/despesa-agregada';
+import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import DevExpress from 'devextreme';
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { DespesaAgregadaService } from '../../../service/despesa-agregada.service';
+import DataSource = DevExpress.data.DataSource;
+
+import { from } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-despesa-agregada-list',
@@ -13,6 +15,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class DespesaAgregadaListComponent {
   despesasAgregadasDataSource: DataSource;
+  despesaAgregada: Array<any>[]; 
 
   constructor(
     private despesaAgregadaService: DespesaAgregadaService,
@@ -22,9 +25,9 @@ export class DespesaAgregadaListComponent {
     private title: Title) {
       
       this.title.setTitle('Despesas Agregadas');
-      this.despesaAgregadaService.getDepesasAgregadas().subscribe((data) => {
-      this.despesasAgregadasDataSource = data || [];
-      this.breadcrumbService.set('@despesa-agregada-list', 'Despesas-agregadas-list');
+      this.despesaAgregadaService.getDepesasAgregadas().subscribe((data: any[]) => {
+        console.log(data);
+        
     });
   }
 

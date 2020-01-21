@@ -1,15 +1,11 @@
-import { DxValidatorModule } from 'devextreme-angular/ui/validator';
-import {NgModule} from '@angular/core';
-import {DxButtonModule, DxDataGridModule, DxFormModule, DxValidationSummaryModule, DxTextBoxModule, DxDateBoxModule} from 'devextreme-angular';
-import {
-  DESPESA_AGREGADA_ROUTE_COMPONENTS,
-  DespesaAgregadaRoutingModule
-} from './despesa-agregada.routing.module';
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DxButtonModule, DxDataGridModule, DxDateBoxModule, DxFormModule, DxTextBoxModule, DxValidationSummaryModule } from 'devextreme-angular';
 import { DxiItemModule } from 'devextreme-angular/ui/nested';
+import { DxValidatorModule } from 'devextreme-angular/ui/validator';
+import { DespesaAgregadaRoutingModule, DESPESA_AGREGADA_ROUTE_COMPONENTS } from './despesa-agregada.routing.module';
 
 @NgModule({
   declarations: [
