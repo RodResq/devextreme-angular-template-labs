@@ -1,21 +1,32 @@
-import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ItemElemento } from './../domain/item-elemento';
 import { HttpClient } from '@angular/common/http';
-import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
+import DataSource from 'devextreme/data/data_source';
+import { Observable } from 'rxjs';
+import { DataSourceConfig } from '../@core/data-source-config';
+import { environment } from './../../environments/environment';
+import { JiiStore } from './../@core/jii/jii-store';
+import { CrudService } from '../@core/crud.service';
 
-const API_CONTEXT: string = '/suplementacoes';
+const API_CONTEXT: string = '/itemElemento';
 
 @Injectable({ providedIn: 'root' })
-export class SuplementacaoService<T>{
+export class SuplementacaoService extends CrudService<ItemElemento>{
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {
+        super(httpClient, API_CONTEXT)
+    }
 
-    createDataSource(): Observable<T> {
-        return this.httpClient.get<T>(`${environment.serverUrl}${API_CONTEXT}`);
+    createDataSource(config?: DataSourceConfig<ItemElemento>): DataSource {
+        let configuration: any = {
+            store: new JiiStore(this.httpClient, API_CONTEXT)
+        }
+        
+
+        return new DataSource(configuration);
     }
 
     getSuplementacaoById(id: number): Observable<T> {
-        return this.httpClient.get<T>(`${environment.serverUrl}${API_CONTEXT}/${id}`);
+        return this.httpClient.get<T>(`${environment.urlBase}${API_CONTEXT}/${id}`);
     }
 }

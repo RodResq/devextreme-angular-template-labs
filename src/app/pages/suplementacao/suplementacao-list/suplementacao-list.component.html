@@ -33,7 +33,7 @@
                       [width]="300"></dxo-search-panel>
 
     <!-- Oficio Tse -->
-    <dxi-column dataField="oficioTse"
+    <dxi-column dataField="operacaoOrcamentaria.oficioTse"
                 caption="Oficio Tse"
                 alignment="left"
                 [allowHeaderFiltering]="false">
@@ -41,28 +41,28 @@
     
 
     <!-- Oficio Tse -->
-    <dxi-column dataField="registroSiafEm"
+    <dxi-column dataField="operacaoOrcamentaria[0].registroSiafEm"
                 caption="Data"
                 alignment="left"
                 dataType="date"
                 [allowHeaderFiltering]="false">
     </dxi-column>
     <!-- Valor -->
-    <dxi-column dataField="valor"
+    <dxi-column dataField="operacaoOrcamentaria[0].valor"
                 caption="Valor"
                 alignment="left"
                 [allowHeaderFiltering]="false">
     </dxi-column>
 
     <!-- documentoSiaf -->
-    <dxi-column dataField="documentoSiaf"
+    <dxi-column dataField="operacaoOrcamentaria[0].documentoSiaf"
                 caption="Documento Siafi"
                 alignment="left"
                 [allowHeaderFiltering]="false">
     </dxi-column>
 
     <!-- enventoSei -->
-    <dxi-column dataField="eventoSei"
+    <dxi-column dataField="operacaoOrcamentaria[0].eventoSei"
                 caption="Evento Sei"
                 alignment="left"
                 [allowHeaderFiltering]="false">
@@ -87,12 +87,10 @@
             </dx-button> -->
             <dx-button icon="chevronnext"
                        hint="Ver Detalhes"
-                       (onClick)="null">
+                       (onClick)="detail(data.data.id)">
             </dx-button>
         </div>
     </dxi-column>
     <!-- SUMMARY -->
-    <dxo-summary>
 
-    </dxo-summary>
 </dx-data-grid>

@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
 @Injectable({ providedIn: 'root'})
 export class DespesaAgregadaService {
 
-  urlBase: string =  environment.serverUrl;
+  urlBase: string =  environment.urlBase;
   despesaAgregada: Observable<any[]>;
 
   constructor(

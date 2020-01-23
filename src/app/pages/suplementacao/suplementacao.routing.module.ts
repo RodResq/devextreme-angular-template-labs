@@ -1,3 +1,4 @@
+import { SuplementacaoDetailComponent } from './suplementacao-detail/suplementacao-detail.component';
 import { SuplementacaoListComponent } from './suplementacao-list/suplementacao-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -6,6 +7,10 @@ const routes: Routes = [
     {
       path: '',
       children: [
+        {
+          path: ':id',
+          component: SuplementacaoDetailComponent
+        },
         {
           path: '',
           component: SuplementacaoListComponent
@@ -25,5 +30,6 @@ const routes: Routes = [
 export class SuplementacaoRoutingModule { }
 
 export const SUPLEMENTACAO_ROUTE_COMPONENTS = [
-    SuplementacaoListComponent
+    SuplementacaoListComponent,
+    SuplementacaoDetailComponent
 ];

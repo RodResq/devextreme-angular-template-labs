@@ -4,75 +4,63 @@ Para visualizar o diagrama instale o plugin do eclipse, ver instrucões em: http
 @startuml
 skinparam defaultFontName Monospace
 skinparam ClassBackgroundColor<<View>> LightCyan
-skinparam ClassBackgroundColor<<Embeddable>> WhiteSmoke
-skinparam nodesep 10
-skinparam ranksep 10
-/'left to right direction'/
-
-/' Pacote com as delcarações de classes do plantuml (http://plantuml.com/class-diagram)
-class Pessoa {
-	- id: Long {id}
-	- nome: String[100]
-	- login: String[50]
-	- cpf: String[11]
-	- telefone: String[11]
-	- altura: Long
-	- peso: Long
-	- ativo: Boolean
-	- dataNasc: LocalDateTime
-	- dataInicio: LocalDateTime
-	- pessoaType: PessoaType
-	- descricao: String[1000]
-	-- tagged values --
-	<b>@table.name</b>: CR_PESSOA
-	<b>@cpf.label</b>: CPF
-	<b>@cpf.mask</b>: 000.000.000-00
-	<b>@telefone.mask</b>: (00) 00000-0000
-	<b>@dataNasc.label</b>: Nascimento
-	<b>@dataInicio.label</b>: Início de Exercício
-	<b>@descricao.label</b>: Descrição
-}
-'/
-
+skinparam ClassBackgroundColor<<Enum>> WhiteSmoke
+skinparam nodesep 200 
+skinparam ranksep 100
+' top to bottom direction
+' left to right direction
 
 package "br.jus.tre_pa.sof.domain" <<Frame>> {
 
 	class OrcamentoAutorizado {
 		- id: Long {id}
-		- exercicio: LocalDate
-		- totalInicial: BigDecimal
+		- exercicio: Long
+		- disponibilidadeUaEm: LocalDateTime
+		- inicioVigenciaEm: LocalDateTime
+		- fimVigenciaEm: LocalDateTime
+		- processoSei: String
+		-- tagged values --
+		<b>@table.name</b>: ORCAMENTO_AUTORIZADO
 	}
 
 	class AcaoOrcamentaria {
 		- id: Long {id}
 		- nome: String
 		- dotacaoFixada: BigDecimal
+		-- tagged values --
+		<b>@table.name</b>: ACAO_ORCAMENTARIA
 	}
 
-
-	class MacroUnidade {
+	class Unidade {
 		- id: Long {id}
 		- nome: String
-	}
-
-	class UnidadeGestoraResponsavel {
-		- id: Long {id}
-		- nome: String
+		- tipo: UnidadeType
 		- sigla: String
+		- deprecatedAt: LocalDateTime
+		-- tagged values --
+		<b>@table.name</b>: UNIDADE
 	}
-
-
 
 	class GrupoDespesa {
 		- id: Long {id}
 		- codigo: Long
 		- nome: String
+		-- tagged values --
+		<b>@table.name</b>: GRUPO_DESPESA
 	}
+
+	note right of GrupoDespesa 
+		Investimento
+		Custeio
+		Capacitação
+	end note
 
 	class Ptres {
 		- id: Long {id}
 		- codigo: Long
 		- nome: String
+		-- tagged values --
+		<b>@table.name</b>: PTRES
 	}
 
 	class DespesaAgregada {
@@ -80,22 +68,28 @@ package "br.jus.tre_pa.sof.domain" <<Frame>> {
 		- codigo: Long
 		- nome: String
 		- descricao: String
+		-- tagged values --
+		<b>@table.name</b>: DESPESA_AGREGADA
 	}
 
 	class PlanoInterno {
 		- id: Long {id}
 		- nome: String
+		-- tagged values --
+		<b>@table.name</b>: PLANO_INTERNO
 	}
 
 	class Elemento {
 		- id: Long {id}
 		- codigo: string
+		-- tagged values --
+		<b>@table.name</b>: ELEMENTO
 	}
 
 	class ItemElemento {
 		- id: Long {id}
-		- descricao: string
-		- dotacaoFixada: BigDecimal
+		-- tagged values --
+		<b>@table.name</b>: ITEM_ELEMENTO
 	}
 
 	class OperacaoOrcamentaria {
@@ -103,10 +97,12 @@ package "br.jus.tre_pa.sof.domain" <<Frame>> {
 		- tipo: OperacaoOrcamentariaType
 		- oficioTse: String
 		- documentoSiaf: String
-		- enventoSei: String
+		- eventoSei: String
 		- registradaSiafEm: LocalDateTime
 		- valor: BigDecimal
 		- observacao: String[2048]
+		-- tagged values --
+		<b>@table.name</b>: OP_ORCAMENTARIA
 	}
 
 
@@ -118,12 +114,16 @@ package "br.jus.tre_pa.sof.domain" <<Frame>> {
 		- status: String[2048]
 		- solicitadoPor: String
 		- solicitadoEm: LocalDateTime
+		-- tagged values --
+		<b>@table.name</b>: SOLIC_EMPENHO
 	}
 
 	class ItemSolicitacaoEmpenho {
 		- id: Long {id}
 		- valor: BigDecimal
 		- solicitadoEm: LocalDateTime
+		-- tagged values --
+		<b>@table.name</b>: ITEM_SOLIC_EMPENHO
 	}
 
 	class ItemSolicitacaoEmpenhoType {
@@ -133,17 +133,21 @@ package "br.jus.tre_pa.sof.domain" <<Frame>> {
 		- notaEmpenhoAssociadoObrigatorio: boolean
 		- justificativaObrigatoria: boolean
 		- fatorMutiplicador: Integer[1]
-
+		-- tagged values --
+		<b>@table.name</b>: ITEM_SOLIC_EMPENHO_TYPE
 	}
 
 
 	class PreEmpenho {
 		- id: Long {id}
-		- numero: String
+		- numeroSiaf: String
 		- tipo: PreEmpenhoType
 		- valor: BigDecimal
-		- emissaoEm: LocalDateTime
-		- reversao: boolean
+		- emissaoSiafEm: LocalDateTime
+		- registradoSiafEm: LocalDateTime
+		- registradiPor: String
+		-- tagged values --
+		<b>@table.name</b>: PRE_EMPENHO
 
 	}
 
@@ -158,6 +162,26 @@ package "br.jus.tre_pa.sof.domain" <<Frame>> {
 		- criadoEm: LocalDateTime
 		- criadoPor: LocalDateTime
 		- status: StatusNotaEmpenhoType
+		-- tagged values --
+		<b>@table.name</b>: NOTA_EMPENHO
+	}
+
+	class ItemAcaoOrcamentaria {
+		- id: Long {id}
+		-- tagged values --
+		<b>@table.name</b>: ITEM_ACAO_ORCAMENTARIA
+	}
+
+	class ItemDespesaAgregada {
+		- id: Long {id}
+		-- tagged values --
+		<b>@table.name</b>: ITEM_DESPESA_AGREGADA
+	}
+
+	class ItemPlanoInterno {
+		- id: Long {id}
+		-- tagged values --
+		<b>@table.name</b>: ITEM_PLANO_INTERNO
 	}
 
 
@@ -176,21 +200,22 @@ package "br.jus.tre_pa.sof.domain.enums" <<Frame>>{
 		'
 	'}
 
-	enum PreEmpenhoType {
+	enum PreEmpenhoType<<Enum>> {
 		EMISSAO_DE_EMPENHO
 		EMISSAO_DE_REFORCO
 		REVERSAO_DO_PRE_EMPENHO
 		EMISSAO_REPACTUACAO
 		EMISSAO_REAJUSTE
 	}
+	
 
-	enum NotaEmpenhoEspecieType {
+	enum NotaEmpenhoEspecieType<<Enum>>  {
 		EMISSAO
 		REFORCO
 		ANULACAO
 	}
 
-	enum OperacaoOrcamentariaType {
+	enum OperacaoOrcamentariaType<<Enum>>  {
 		SUPLEMENTACAO
 		REMANEJAMENTO
 		CONTIGENCIAMENTO
@@ -199,28 +224,34 @@ package "br.jus.tre_pa.sof.domain.enums" <<Frame>>{
 
 
 
-	enum StatusSolicitacaoEmpenhoType {
+	enum StatusSolicitacaoEmpenhoType<<Enum>>  {
 		INICIADO
 		PRE_EMPENHO_GERADO
 		EMPENHO_GERADO
 		CANCELADO
 	}
 
-	enum StatusPreEmpenhoType {
+	enum StatusPreEmpenhoType<<Enum>>  {
 		GERADA
 		EMPENHO_GERADO
 		CANCELADO
 	}
 
-	enum StatusNotaEmpenhoType {
+	enum StatusNotaEmpenhoType<<Enum>>  {
 		GERADO
 		RESTOS_A_PAGAR
 	}
 
+	enum UnidadeType<<Enum>>  {
+    		MACRO_UNIDADE
+    		UGR
+    }
+
 }
 
+
 package "br.jus.tre_pa.sof.domain.views" <<Frame>>{
-	class VwOrcamento {
+	class VwOrcamento<<View>> {
 		- id: Long {id}
 		- orcamentoAutorizadoId:Long
 		- acaoOrcamentariaId:Long
@@ -244,35 +275,40 @@ package "br.jus.tre_pa.sof.domain.views" <<Frame>>{
 	}
 }
 
-
-
-
-OrcamentoAutorizado "1" -down- "1..*" AcaoOrcamentaria: possui >
-AcaoOrcamentaria "1" -right- "1..*" Ptres: possui >
-Ptres "1" -right- "1..*" GrupoDespesa: possui >
-GrupoDespesa "1" -down- "1..*" DespesaAgregada: possui >
-DespesaAgregada "1..*" -down- "1..*" PlanoInterno: possui >
-PlanoInterno "1..*" -down- "1..*" ItemElemento: possui >
-ItemElemento "1" -right- "1" Elemento: possui >
-ItemElemento "1" --> "0..*" ItemSolicitacaoEmpenho
-ItemSolicitacaoEmpenho "0..*" -left- "1" ItemSolicitacaoEmpenhoType: possui >
-ItemSolicitacaoEmpenho "0..*" -down-> "1"  NotaEmpenho: NEReferenciada >
-ItemSolicitacaoEmpenho "1" -down-> "0..*"  NotaEmpenho: Gera <
-ItemSolicitacaoEmpenho "0..*" -right-> "0..*" PreEmpenho: PreEmpenhoReferenciado >
-ItemSolicitacaoEmpenho "1" -right-> "0..*" PreEmpenho: Gera >
-NotaEmpenho "1" --> "0..*" NotaEmpenho: notasEmpenhosAssociadas >
-PreEmpenho "0..*" <-- "0..*" PreEmpenho: preEmpenhosAssociados
-PreEmpenho "0..*" -right-  "0..*" NotaEmpenho: gera >
-ItemElemento "1" --> "0..*" NotaEmpenho
-ItemElemento "1" --> "0..*" PreEmpenho
-
-'UnidadeGestoraResponsavel "1..*" -up- "1" MacroUnidade: possui <
-UnidadeGestoraResponsavel "1" -right- "0..*" ItemElemento: possui >
-OperacaoOrcamentaria "0..*" -- "1" ItemElemento: possui <
-OperacaoOrcamentaria "0..*"  -- "0..*"  OperacaoOrcamentaria: operacoesOrcamentariaAssociadas >
-'ItemElemento -right- OperacaoOrcamentaria: possui <
-SolicitacaoEmpenho "1" -- "1..*" ItemSolicitacaoEmpenho: possui >
-UnidadeGestoraResponsavel "1" -left- "0..*" SolicitacaoEmpenho: possui >
-UnidadeGestoraResponsavel "1..*" -- "1" UnidadeGestoraResponsavel: MacroUnidade
+OrcamentoAutorizado "1" <-down-> "1..*" ItemAcaoOrcamentaria: possui > 
+ItemAcaoOrcamentaria "1..*" -right-> "1" AcaoOrcamentaria
+ItemAcaoOrcamentaria "1" -down-> "0..*" ItemDespesaAgregada: possui >
+ItemDespesaAgregada "1..*" -up-> "1" DespesaAgregada: possui >
+ItemDespesaAgregada "1" <-down-> "0..*" ItemPlanoInterno: possui >
+ItemPlanoInterno  -right-> "1" PlanoInterno: possui > 
+ItemPlanoInterno "1" <-down-> "0..*" ItemElemento: possui >
+ItemElemento "1..*" <-up-> "1" Elemento: possui >
+ItemElemento "1" <-down-> "1..*" ItemSolicitacaoEmpenho
+ItemElemento "1" <-down-> "0..*" PreEmpenho
+ItemElemento "1" <-down-> "0..*" OperacaoOrcamentaria: < possui 
+ItemElemento "1" <-left-> "0..*" NotaEmpenho
+ItemElemento "1" -up-> "1..*" Unidade: pertence >
+ItemElemento "1" -up-> "1..*" OrcamentoAutorizado: pertence >
+ItemSolicitacaoEmpenho "0..*" <-right-> "0..1" PreEmpenho: referencia >
+note on link
+	reversão
+end note
+ItemSolicitacaoEmpenho "0..1" <-right-> "0..*" PreEmpenho: < gera 
+ItemSolicitacaoEmpenho "0..*" <-down-> "1" ItemSolicitacaoEmpenhoType: possui >
+ItemSolicitacaoEmpenho "0..*" -down-> "1"  NotaEmpenho: referencia >
+note on link
+	anulação ou reforço
+end note
+ItemSolicitacaoEmpenho "1" -down-> "0..*"  NotaEmpenho: < gera            '    
+PreEmpenho "0..1 \n preEmpenhoReferenciado" <-- "0..* \n preEmpenhosSubordinados" PreEmpenho: possui >
+PreEmpenho "0..*" <-down->  "0..*" NotaEmpenho: possui >
+NotaEmpenho "1 \n notasEmpenhosSuperior" <-right-> "0..* \n notasEmpenhosSubordinados" NotaEmpenho: possui >
+DespesaAgregada "1" <-down-> "0..*" Ptres: possui >
+DespesaAgregada "1" <-down-> "0..*" GrupoDespesa: possui >
+SolicitacaoEmpenho "1" <-down-> "0..*" ItemSolicitacaoEmpenho: possui >
+Unidade "1" <-left-> "0..*" SolicitacaoEmpenho: faz >
+Unidade "1" <-up- ItemAcaoOrcamentaria: possui > 
+Unidade "1..* \n unidadesSubordinadasResponsavel" <--> "1 \n unidadeSuperiorResponsavel" Unidade: possui > 
+OperacaoOrcamentaria "0..1 \n operacaoOrcamentariaOrigem"  -- "0..* \n operacoesOrcamentariasDestino"  OperacaoOrcamentaria: operacoesOrcamentariaAssociadas >
 
 @enduml
