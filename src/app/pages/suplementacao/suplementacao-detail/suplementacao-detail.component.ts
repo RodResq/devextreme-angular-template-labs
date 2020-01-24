@@ -1,3 +1,4 @@
+import { ItemElemento } from './../../../domain/item-elemento';
 import { ActivatedRoute } from '@angular/router';
 import { SuplementacaoService } from './../../../service/suplementacao.service';
 import { Subject } from 'rxjs';
@@ -19,17 +20,17 @@ export class SuplementacaoDetailComponent implements OnInit{
 
     constructor(
         private title: Title,
-        private suplementacaoService: SuplementacaoService<any>,
+        private suplementacaoService: SuplementacaoService,
         private activatedRoute: ActivatedRoute
     ) {}
 
     ngOnInit() {
         this.title.setTitle('Detalhes da Suplementação');
         this.id = +this.activatedRoute.snapshot.paramMap.get('id');
-        this.suplementacaoService.getSuplementacaoById(this.id).subscribe((data) => {
-            this.suplementacaoDetailDataSource = data || [];
+        // this.suplementacaoService.getSuplementacaoById(this.id).subscribe((data) => {
+        //     this.suplementacaoDetailDataSource = data || [];
             
-        })
+        // })
     }
 
 }

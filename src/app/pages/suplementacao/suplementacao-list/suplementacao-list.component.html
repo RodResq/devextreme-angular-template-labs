@@ -32,65 +32,73 @@
     <dxo-search-panel [visible]="true"
                       [width]="300"></dxo-search-panel>
 
-    <!-- Oficio Tse -->
-    <dxi-column dataField="operacaoOrcamentaria.oficioTse"
-                caption="Oficio Tse"
-                alignment="left"
-                [allowHeaderFiltering]="false">
-    </dxi-column>
+      <!--acaoOrcamentaria-->
+      <dxi-column dataField="operacaoOrcamentaria.itemPlanoInterno.itemDespesaAgregada.itemAcaoOrcamentaria.acaoOrcamentaria.nome"
+          caption="Ação Orcamentaria"
+          alignment="left"
+          [allowHeaderFiltering]="false">
+      </dxi-column>
+
+      <!--Macro unidade-->
+      <dxi-column dataField="operacaoOrcamentaria.itemPlanoInterno.itemDespesaAgregada.itemAcaoOrcamentaria.unidade.unidadeType.nome"
+          caption="Macro unidade"
+          alignment="left"
+          [allowHeaderFiltering]="false">
+      </dxi-column>
+
+      <!-- unidade -->
+      <dxi-column dataField="operacaoOrcamentaria.itemPlanoInterno.itemDespesaAgregada.itemAcaoOrcamentaria.unidade.sigla"
+          caption="Macro unidade"
+          alignment="left"
+          [allowHeaderFiltering]="false">
+      </dxi-column>
+
+      <!-- unidade -->
+      <dxi-column dataField="operacaoOrcamentaria.itemPlanoInterno.planoInterno.nome"
+          caption="Plano Interno"
+          alignment="left"
+          [allowHeaderFiltering]="false">
+      </dxi-column>
+
+    <!-- Elemento -->
+      <dxi-column dataField="operacaoOrcamentaria.elemento.codigo"
+                  caption="Elemento"
+                  alignment="left"
+                  [allowHeaderFiltering]="false">
+      </dxi-column>
     
 
-    <!-- Oficio Tse -->
-    <dxi-column dataField="operacaoOrcamentaria[0].registroSiafEm"
-                caption="Data"
-                alignment="left"
-                dataType="date"
-                [allowHeaderFiltering]="false">
-    </dxi-column>
     <!-- Valor -->
-    <dxi-column dataField="operacaoOrcamentaria[0].valor"
+    <dxi-column dataField="operacaoOrcamentaria.valor"
                 caption="Valor"
                 alignment="left"
                 [allowHeaderFiltering]="false">
     </dxi-column>
 
-    <!-- documentoSiaf -->
-    <dxi-column dataField="operacaoOrcamentaria[0].documentoSiaf"
-                caption="Documento Siafi"
-                alignment="left"
-                [allowHeaderFiltering]="false">
-    </dxi-column>
-
-    <!-- enventoSei -->
-    <dxi-column dataField="operacaoOrcamentaria[0].eventoSei"
-                caption="Evento Sei"
-                alignment="left"
-                [allowHeaderFiltering]="false">
-    </dxi-column>
 
     <!-- BUTTONS -->
-    <dxi-column type="buttons"
+    <!-- <dxi-column type="buttons"
                 cellTemplate="buttonsTemplate"
                 [allowResizing]="false"
                 [allowReordering]="false"
-                [showInColumnChooser]="false">
-        <div *dxTemplate="let data of 'buttonsTemplate'"
+                [showInColumnChooser]="false"> -->
+        <!-- <div *dxTemplate="let data of 'buttonsTemplate'"
              fxLayout="row"
-             fxLayoutAlign="space-between center">
-            <dx-button icon="edit"
+             fxLayoutAlign="space-between center"> -->
+            <!-- <dx-button icon="edit"
                        hint="Editar"
-                       (onClick)="null">
-            </dx-button>
+                       (onClick)="null"> -->
+            <!-- </dx-button> -->
             <!-- <dx-button icon="trash"
                        hint="Excluir"
                        (onClick)="null">
             </dx-button> -->
-            <dx-button icon="chevronnext"
+            <!-- <dx-button icon="chevronnext"
                        hint="Ver Detalhes"
                        (onClick)="detail(data.data.id)">
-            </dx-button>
-        </div>
-    </dxi-column>
+            </dx-button> -->
+        <!-- </div> -->
+    <!-- </dxi-column> -->
     <!-- SUMMARY -->
 
 </dx-data-grid>

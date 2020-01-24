@@ -58,18 +58,18 @@ export class JiiStore<T> extends CustomStore {
     options: JiiStoreOptions = new JiiStoreOptions()
   ) {
     super({
-      key: options.key === undefined ? 'id' : options.key,
-      byKey: (key) => {
-        if (options.key === null) return key;
-        return http.get<T>(this.byKeyUrl(options, basePath, key)).toPromise();
-      },
+      // key: options.key === undefined ? 'id' : options.key,
+      // byKey: (key) => {
+      //   if (options.key === null) return key;
+      //   return http.get<T>(this.byKeyUrl(options, basePath, key)).toPromise();
+      // },
       loadMode: "raw",
       load: (loadOptions: LoadOptions) => {
         return http.get<any>(this.loadUrl(options, basePath))
           .toPromise()
-          .then((jiiPage: JiiPage<T>) => {
-            return jiiPage;
-          })
+          // .then((jiiPage: JiiPage<T>) => {
+          //   return jiiPage;
+          // })
       }
     });
   }

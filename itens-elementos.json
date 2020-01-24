@@ -1,0 +1,82 @@
+{
+  "itensElementos": [
+    {
+      "id": 1,
+      "operacaoOrcamentaria": 
+        {
+          "id": 1,
+          "tipo": "SUPLEMENTACAO",
+          "oficioTse": "2122/2019",
+          "documentoSiaf": "35.2019.6.14.8000",
+          "eventoSei": "0001084",
+          "registroSiafEm": "12/01/2020",
+          "valor": 230000,
+          "observacao": "",
+          "elemento":
+            {
+              "id": 1,
+              "codigo": "33.30.90.27"
+            },
+          "itemPlanoInterno": 
+            {
+              "id": 1,
+              "planoInterno": 
+              {
+                "id": 1,
+                "nome": "AOSA ACOEDU"
+              }, 
+            "itemDespesaAgregada": 
+              {
+                "id": 1,
+                "depesaAgregada": 
+                  {
+                    "id": 1,
+                    "nome": "Ações Educativas",
+                    "grupoDespesa":
+                      {
+                        "id": 1,
+                        "nome": "CUSTEIO"
+                      }
+                  },
+                "ptrs":
+                  {
+                    "id": 1,
+                    "codigo": 1254,
+                    "nome": "AOSA ACOEDU"
+                  },
+                "itemAcaoOrcamentaria":{
+                  "id": 1,
+                  "orcamentoAutorizado":
+                    {
+                      "id": 1,
+                      "exercicio": 2019,
+                      "disponibilidadeEm": "01/01/2019",
+                      "inicioVigenciaEm": "01/01/2019",
+                      "finVigenciaEm": "12/01/2019",
+                      "processoSei": "111/2019" 
+                    },
+                  "unidade": 
+                    {
+                      "id": 1,
+                      "nome": "SECRETARIA ADMINISTARATIVA",
+                      "unidadeType": 
+                        {
+                          "id": 1,
+                          "tipo": "Macro unidade",
+                          "nome": "SA" 
+                        },
+                      "sigla": "SEAD",
+                      "deprecatedAt": null
+                    },
+                  "acaoOrcamentaria": {
+                    "id": 1,
+                    "nome": "20 GP",
+                    "dotacaoFixada": 100000.00
+                  }
+                }
+              }
+            }
+        }
+    }
+  ]
+}

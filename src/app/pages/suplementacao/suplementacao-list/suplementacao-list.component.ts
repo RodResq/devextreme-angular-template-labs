@@ -1,12 +1,11 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import DataSource from 'devextreme/data/data_source';
+import { Subject } from 'rxjs';
 import { JiiStore } from './../../../@core/jii/jii-store';
 import { ItemElemento } from './../../../domain/item-elemento';
 import { SuplementacaoService } from './../../../service/suplementacao.service';
-import { Subject } from 'rxjs';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { DxDataGridComponent } from 'devextreme-angular';
-import { Title } from '@angular/platform-browser';
-import DataSource from 'devextreme/data/data_source'
 
 @Component({
     selector: 'app-suplementacao-list',
@@ -16,6 +15,8 @@ export class SuplementacaoListComponent implements OnInit, OnDestroy {
     
     suplementacaoDataSource: DataSource;
     suplementacaoStore: JiiStore<ItemElemento>
+    itemElemento: ItemElemento = new ItemElemento();
+    
 
     pageSize: number = 20;
     count: number = 0;
@@ -32,10 +33,6 @@ export class SuplementacaoListComponent implements OnInit, OnDestroy {
         this.suplementacaoDataSource = this.suplementacaoService.createDataSource({
             store: this.suplementacaoStore
         });
-
-        console.log(this.suplementacaoDataSource);
-        
-            
     }
 
     detail(id: number) {
